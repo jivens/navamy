@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
+import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import './Nav.css';
+import SpellingPronunciation from './SpellingPronunciation';
+import About from './About';
 
 class Nav extends Component {
 
@@ -14,24 +17,29 @@ class Nav extends Component {
 
   	render() {
     	return (
+    		<Router>
+    		<div>
 			<nav>
 				<div className="navWide">
 					<div className="wideDiv">
-						<a href="#">Link 1</a>
-						<a href="#">Link 2</a>
-						<a href="#">Link 3</a>
+						<Link to="/"><i className="fa faCoffee site-nav--icon"></i>About</Link>
+						<Link to="/spelling"><i className="fa faCoffee site-nav--icon"></i>Spelling</Link>
 					</div>
 				</div>
 				<div className="navNarrow">
 					<i className="fa fa-bars fa-2x" onClick={this.burgerToggle}></i>
 					<div className="narrowLinks">
-						<a href="#" onClick={this.burgerToggle}>Link 1</a>
-						<a href="#" onClick={this.burgerToggle}>Link 2</a>
-						<a href="#" onClick={this.burgerToggle}>Link 3</a>
+						<Link to="/" onClick={this.burgerToggle}> about</Link>
+						<Link to="/spelling" onClick={this.burgerToggle}> spelling</Link>
 					</div>
 				</div>
 			</nav>
-
+				<Switch>
+                  <Route exact path="/" component={About} />
+                  <Route path="/spelling" component={SpellingPronunciation} />
+                </Switch>
+			</div>
+			</Router>
     	);
   	}
 }

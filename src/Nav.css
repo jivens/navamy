@@ -38,7 +38,7 @@ nav .navNarrow .narrowLinks a {
   padding: 0.5em 0;
 }
 
-@media (min-width: 480px) {
+@media (min-width: 600px) {
   nav .navWide {
     display: block;
   }
